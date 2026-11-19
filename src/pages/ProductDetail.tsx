@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import type { PcProduct } from '../types'
+import { useAuth } from '../auth/AuthContext'
 
 function ProductDetail() {
+  const { isAdmin } = useAuth()
   const { id } = useParams<{ id: string }>()
   const [product, setProduct] = useState<PcProduct | null>(null)
   const [loading, setLoading] = useState(true)
@@ -12,7 +14,7 @@ function ProductDetail() {
   const [deleteError, setDeleteError] = useState<string | null>(null)
 
   const handleDelete = async () => {
-    if (!product || !window.confirm(`'${product.name}' 제품을 삭제할까요?`)) return
+    if (!isAdmin || !product || !window.confirm(`'${product.name}' 제품을 삭제할까요?`)) return
 
     setDeleting(true)
     setDeleteError(null)
@@ -55,12 +57,14 @@ function ProductDetail() {
             <h1 className="detail-name">{product.name}</h1>
             <p className="detail-price">{product.price.toLocaleString()}만원</p>
             <p className="detail-desc">{product.text}</p>
-            <div className="detail-actions">
-              <Link to={`/pc/update/${product.id}`} className="btn-primary">수정</Link>
-              <button type="button" className="btn-danger" onClick={handleDelete} disabled={deleting}>
-                {deleting ? '삭제 중...' : '삭제'}
-              </button>
-            </div>
+            {isAdmin && (
+              <div className="detail-actions">
+                <Link to={`/pc/update/${product.id}`} className="btn-primary">수정</Link>
+                <button type="button" className="btn-danger" onClick={handleDelete} disabled={deleting}>
+                  {deleting ? '삭제 중...' : '삭제'}
+                </button>
+              </div>
+            )}
             {deleteError && <p className="status error">삭제하지 못했습니다: {deleteError}</p>}
           </div>
         </article>

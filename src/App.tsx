@@ -4,17 +4,25 @@ import ProductList from './pages/ProductList'
 import ProductDetail from './pages/ProductDetail'
 import ProductCreate from './pages/ProductCreate'
 import ProductUpdate from './pages/ProductUpdate'
+import Register from './pages/Register'
+import Login from './pages/Login'
+import { AuthProvider } from './auth/AuthContext'
+import AdminRoute from './auth/AdminRoute'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<ProductList />} />
-        <Route path="/pc/create" element={<ProductCreate />} />
-        <Route path="/pc/update/:id" element={<ProductUpdate />} />
-        <Route path="/pc/:id" element={<ProductDetail />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/pc/create" element={<AdminRoute><ProductCreate /></AdminRoute>} />
+          <Route path="/pc/update/:id" element={<AdminRoute><ProductUpdate /></AdminRoute>} />
+          <Route path="/pc/:id" element={<ProductDetail />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 

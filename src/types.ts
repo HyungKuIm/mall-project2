@@ -7,3 +7,10 @@ export type PcProduct = {
   picSUrl: string
   picLUrl: string
 }
+
+export type Customer = {
+  id?: number
+  name: string
+  mail: string
+  role?: string
+}

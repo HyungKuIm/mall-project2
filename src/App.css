@@ -225,3 +225,39 @@
     grid-template-columns: 1fr;
   }
 }
+
+.auth-form {
+  max-width: 400px;
+}
+
+.auth-switch {
+  margin: 0;
+  font-size: 14px;
+}
+
+.auth-switch a {
+  color: var(--accent);
+}
+
+.auth-nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.auth-user {
+  color: var(--text-h);
+}
+
+.btn-text {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { PcProduct } from '../types'
+import AuthNav from '../components/AuthNav'
+import { useAuth } from '../auth/AuthContext'
 
 function ProductList() {
+  const { isAdmin } = useAuth()
   const [products, setProducts] = useState<PcProduct[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -20,9 +23,10 @@ function ProductList() {
 
   return (
     <main className="shop">
+      <AuthNav />
       <div className="list-header">
         <h1>중고 노트북 판매</h1>
-        <Link to="/pc/create" className="btn-primary">제품 추가</Link>
+        {isAdmin && <Link to="/pc/create" className="btn-primary">제품 추가</Link>}
       </div>
 
       {loading && <p className="status">불러오는 중...</p>}
