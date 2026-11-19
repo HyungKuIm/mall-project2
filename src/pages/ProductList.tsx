@@ -20,7 +20,10 @@ function ProductList() {
 
   return (
     <main className="shop">
-      <h1>중고 노트북 판매</h1>
+      <div className="list-header">
+        <h1>중고 노트북 판매</h1>
+        <Link to="/pc/create" className="btn-primary">제품 추가</Link>
+      </div>
 
       {loading && <p className="status">불러오는 중...</p>}
       {error && <p className="status error">목록을 불러오지 못했습니다: {error}</p>}
