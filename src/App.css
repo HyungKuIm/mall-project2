@@ -261,3 +261,180 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+/* ---------- 장바구니 / 주문 ---------- */
+
+.qty-select {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text-h);
+  font: inherit;
+}
+
+.cart-add {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.cart-note {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.cart-list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.cart-thumb {
+  display: block;
+  width: 80px;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 6px;
+  background: var(--code-bg);
+}
+
+.cart-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cart-name {
+  color: var(--text-h);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cart-unit {
+  font-size: 14px;
+}
+
+.cart-subtotal {
+  min-width: 90px;
+  text-align: right;
+  font-weight: 700;
+  color: var(--text-h);
+}
+
+.cart-summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.cart-summary .btn-text:first-child {
+  margin-right: auto;
+}
+
+.cart-total {
+  margin: 0;
+  color: var(--text-h);
+  font-size: 18px;
+}
+
+.btn-text:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+@media (max-width: 720px) {
+  .cart-item {
+    grid-template-columns: 64px minmax(0, 1fr) auto;
+  }
+
+  .cart-thumb {
+    width: 64px;
+  }
+
+  .cart-subtotal {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+.order-summary {
+  max-width: 560px;
+  margin-bottom: 24px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.order-summary h2 {
+  margin: 0 0 12px;
+  font-size: 18px;
+  color: var(--text-h);
+}
+
+.order-summary ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.order-summary li,
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+}
+
+.order-total {
+  margin: 8px 0 0;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--text-h);
+}
+
+.order-meta {
+  margin: -6px 0 12px;
+  font-size: 14px;
+}
+
+.order-message {
+  margin: 0 0 20px;
+  color: var(--text-h);
+  font-size: 17px;
+}
+
+.order-info {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 16px;
+  max-width: 560px;
+  margin: 0 0 24px;
+}
+
+.order-info dt {
+  color: var(--text);
+}
+
+.order-info dd {
+  margin: 0;
+  color: var(--text-h);
+  white-space: pre-wrap;
+}
+
+.field textarea {
+  resize: vertical;
+}

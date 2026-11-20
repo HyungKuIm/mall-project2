@@ -8,6 +8,10 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import { AuthProvider } from './auth/AuthContext'
 import AdminRoute from './auth/AdminRoute'
+import PrivateRoute from './auth/PrivateRoute'
+import Cart from './pages/Cart'
+import OrderForm from './pages/OrderForm'
+import OrderComplete from './pages/OrderComplete'
 
 function App() {
   return (
@@ -20,6 +24,9 @@ function App() {
           <Route path="/pc/:id" element={<ProductDetail />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
+          <Route path="/orderForm" element={<PrivateRoute><OrderForm /></PrivateRoute>} />
+          <Route path="/orderComplete" element={<PrivateRoute><OrderComplete /></PrivateRoute>} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

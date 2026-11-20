@@ -14,6 +14,7 @@ function AuthNav() {
           <span className="auth-user">
             {me.name}님{isAdmin && ' (관리자)'}
           </span>
+          <Link to="/cart" className="btn-text">장바구니</Link>
           <button type="button" className="btn-text" onClick={logout}>로그아웃</button>
         </>
       ) : (
